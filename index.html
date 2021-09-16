@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+  	<div class="mi"><br><br><br>
+  		<strong>1. It's not possible, because we have diffrent width and diffrent height.<br>
+(Possible only if we go with diffrent height - using css).<br> 
+Note: with css div will apper in horizontal order. for diffrent heights layouts ,width will be same.<br>
+I.e <br>
+&nbsp;&nbsp;1&nbsp;&nbsp;4&nbsp;&nbsp;7<br>
+&nbsp;&nbsp;2&nbsp;&nbsp;5&nbsp;&nbsp;8<br>
+&nbsp;&nbsp;3&nbsp;&nbsp;6&nbsp;&nbsp;9<br>
+
+<br><br>
+2 For.Div (child textbox) , not Possible (not able to detect if we have 3 column layout so what will do with middle of div. how to detect it's middle of div.)
+<br><br>
+3.Flip the Div or Hover on the div it's possible.
+<br><br><br>
+SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
+<br><br><br><br><br>
+<div class="2">
+	Click here
+  		<button id="two-col">2 column</button>
+  		<button id="three-col">3 column</button>
+  	</div>
+  	<br><br><br><br><br>
+  	</div>
+  	
+    <section id="photos" class="photos three-col">
+      <div class="image-grid msrItem" id="a"><img src="https://placekitten.com/252/319" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/325/223" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/238/223" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/343/351" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/323/229" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/220/216" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/218/242" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/261/322" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/368/382" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/258/389" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/246/362" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/230/256" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/315/279" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/340/244" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/365/248" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/357/235" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/278/264" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/391/376" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/206/272" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/224/267" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/280/211" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/352/351" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/276/320" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/357/373" alt="pretty kitty"></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/273/270" alt="pretty kitty"></div>
+    </section>
+  </body>
+  <style type="text/css">
+  .image-grid msrItem{
+  	margin-bottom: 20px;
+  }
+  section{
+  	max-width: 1104px;
+  	margin-left: auto;
+  	margin-right: auto;
+  }
+    .photos.two-col{
+      /* Prevent vertical gaps */
+      line-height: 0;
+      -webkit-column-count: 2;
+      -webkit-column-gap: 2px;
+      -moz-column-count: 2;
+      -moz-column-gap: 0px;
+      column-count: 2;
+      column-gap: 20px;
+    }
+.photos.three-col{
+      /* Prevent vertical gaps */
+      line-height: 0;
+      -webkit-column-count: 3;
+      -webkit-column-gap: 0px;
+      -moz-column-count: 3;
+      -moz-column-gap: 0px;
+      column-count: 3;
+      column-gap: 20px;
+    }
+    .photos img {
+      /* Just in case there are inline attributes */
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    /*@media (max-width: 1200px) {
+      .photos {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .photos {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .photos {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .photos {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+      }
+    }*/
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .image-grid.msrItem{position: relative;margin-bottom: 20px;}
+
+    .image-grid.msrItem:after {
+    background-color: #1f1b1b3d;
+    content: attr(data-order);
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: 1px solid #2f2a2a;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 12em;
+    justify-content: center;
+}
+.mi {
+    display: block;
+    max-width: 1141px;
+    width: 100%;
+    margin: 0 auto;
+}
+  </style>
+  <script type="text/javascript">
+  	var i = 1;
+  		$(".image-grid.msrItem").each(function(){
+  			
+  			$(this).attr('data-order', i++);
+  		});
+
+  		$(".image-grid").click(function(){
+  			var halfWidth = window.innerWidth/2;
+  			var currentDiv = $(this).position().left;
+  			console.log(currentDiv + "c");
+  			console.log(halfWidth)
+  			if(halfWidth < currentDiv){
+  				//console.log("current div is on right side")
+  			}
+  			else{
+  				//console.log("current div is on left side")	
+  			}
+  		});
+
+  		$("#two-col").click(function(){
+  		$("#photos").removeClass("three-col");
+  		$("#photos").addClass("two-col");
+  		});
+  		$("#three-col").click(function(){
+  		$("#photos").addClass("three-col");
+  		$("#photos").removeClass("two-col");
+  		});
+  </script>
+</html>
+
+
+
+
+
+
