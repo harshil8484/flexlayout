@@ -1,141 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  </head>
-  <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-  	<div class="mi"><br><br><br>
-  		<strong>1. It's not possible, because we have diffrent width and diffrent height.<br>
-(Possible only if we go with diffrent height - using css).<br> 
-Note: with css div will apper in horizontal order. for diffrent heights layouts ,width will be same.<br>
-I.e <br>
-&nbsp;&nbsp;1&nbsp;&nbsp;4&nbsp;&nbsp;7<br>
-&nbsp;&nbsp;2&nbsp;&nbsp;5&nbsp;&nbsp;8<br>
-&nbsp;&nbsp;3&nbsp;&nbsp;6&nbsp;&nbsp;9<br>
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
-<br><br>
-2 For.Div (child textbox) , not Possible (not able to detect if we have 3 column layout so what will do with middle of div. how to detect it's middle of div.)
-<br><br>
-3.Flip the Div or Hover on the div it's possible.
-<br><br><br>
-SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
-<br><br><br><br><br>
-<div class="2">
-	Click here
-  		<button id="two-col">2 column</button>
-  		<button id="three-col">3 column</button>
-  	</div>
-  	<br><br><br><br><br>
-  	</div>
-  	
-    <section id="photos" class="photos two-col">
-      <div class="image-grid msrItem" id="a">
-        <img src="https://placekitten.com/252/319" alt="pretty kitty">
-        <div class="sub-content">
-          right
-        </div>
-      </div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/325/223" alt="pretty kitty">
-      <div class="sub-content">
-          left
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/238/223" alt="pretty kitty"><div class="sub-content">
-          right
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/343/351" alt="pretty kitty"><div class="sub-content">
-          right
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/323/229" alt="pretty kitty"><div class="sub-content">
-          right
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/220/216" alt="pretty kitty"><div class="sub-content">
-          right
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/218/242" alt="pretty kitty"><div class="sub-content">
-          right
-        </div></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/261/322" alt="pretty kitty"> <div class="sub-content">
-          right
-        </div></div>
-    </section>
-  </body>
-  <style type="text/css">
-  .image-grid msrItem{
-  	margin-bottom: 20px;
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 0px;
+  justify-content: space-between;
+}
+
+
+/* Create four equal columns that sits next to each other */
+
+.column {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 49%;
+  max-width: 49%;
+  padding: 0 0px;
+  justify-content: space-between;
+}
+
+.column img {
+  vertical-align: middle;
+  width: 100%;
+  display: block;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
   }
-  section{
-  	max-width: 1104px;
-  	margin-left: auto;
-  	margin-right: auto;
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
   }
-    .photos.two-col{
-      /* Prevent vertical gaps */
-      line-height: 0;
-      -webkit-column-count: 2;
-      -webkit-column-gap: 2px;
-      -moz-column-count: 2;
-      -moz-column-gap: 0px;
-      column-count: 2;
-      column-gap: 20px;
-    }
-.photos.three-col{
-      /* Prevent vertical gaps */
-      line-height: 0;
-      -webkit-column-count: 3;
-      -webkit-column-gap: 0px;
-      -moz-column-count: 3;
-      -moz-column-gap: 0px;
-      column-count: 3;
-      column-gap: 20px;
-    }
-    .photos img {
-      /* Just in case there are inline attributes */
-      width: 100% !important;
-      height: auto !important;
-    }
+}
 
-    /*@media (max-width: 1200px) {
-      .photos {
-        -moz-column-count: 4;
-        -webkit-column-count: 4;
-        column-count: 4;
-      }
-    }
+.image-grid msrItem {
+  margin-bottom: 20px;
+}
 
-    @media (max-width: 1000px) {
-      .photos {
-        -moz-column-count: 3;
-        -webkit-column-count: 3;
-        column-count: 3;
-      }
-    }
+section {
+  max-width: 1104px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px !important;
 
-    @media (max-width: 800px) {
-      .photos {
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-      }
-    }
+}
 
-    @media (max-width: 400px) {
-      .photos {
-        -moz-column-count: 1;
-        -webkit-column-count: 1;
-        column-count: 1;
-      }
-    }*/
+.image-grid.msrItem {
+  position: relative;
+  margin-bottom: 4%;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    .image-grid.msrItem{position: relative;margin-bottom: 20px;}
 
-    .image-grid.msrItem:after {
+/*.image-grid.msrItem:after {
     background-color: #1f1b1b3d;
     content: attr(data-order);
     width: 20px;
@@ -152,90 +102,199 @@ SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
     text-align: center;
     font-size: 12em;
     justify-content: center;
-}
+}*/
+
 .mi {
-    display: block;
-    max-width: 1141px;
-    width: 100%;
-    margin: 0 auto;
+  display: block;
+  max-width: 1141px;
+  width: 100%;
+  margin: 0 auto;
 }
+
 .sub-content {
-position: absolute;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background: #333031ab;
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    overflow: hidden;
-    padding: 0;
-    transition: width .6s ease-in-out;
-    width: 0px;
-    font-size: 44px;
-    color: #fff;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #333031ab;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 0;
+  transition: width .6s ease-in-out;
+  width: 0px;
+  font-size: 44px;
+  color: #fff;
 }
+
 .sub-content.right {
-  width: 100%;
-    padding-right: 20px;
+  width: calc(100% + 4%);
+  padding-right: 20px;
   opacity: 1;
 }
+
 .sub-content.left {
-  width: 100%;
-    padding-left: 20px;
+  width: calc(100% + 4%);
+  padding-left: 20px;
   opacity: 1;
 }
 
-.rightc{
-
-     left: calc(97% + 16px);
+.rightc {
+  left: calc(97% + 16px);
 }
-.leftc{
 
-      right: calc(97% + 16px);
+.leftc {
+  right: calc(97% + 16px);
 }
-  </style>
-  <script type="text/javascript">
-  	var i = 1;
-  		$(".image-grid.msrItem").each(function(){
-  			
-  			$(this).attr('data-order', i++);
-        var halfWidth = window.innerWidth/2;
-        var currentDiv = $(this).position().left;
-        if(halfWidth < currentDiv){
-          $(this).find(".sub-content").toggleClass("leftc");
-        }
-        else{
-          $(this).find(".sub-content").toggleClass("rightc");
-        }
-  		});
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
 
-  		$(".image-grid").click(function(){
-  			var halfWidth = window.innerWidth/2;
-  			var currentDiv = $(this).position().left;
-  			if(halfWidth < currentDiv){
-  				$(this).find(".sub-content").toggleClass("left");
-  			}
-  			else{
-  				$(this).find(".sub-content").toggleClass("right");
-  			}
-  		});
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
 
-  		$("#two-col").click(function(){
-  		$("#photos").removeClass("three-col");
-  		$("#photos").addClass("two-col");
-  		});
-  		$("#three-col").click(function(){
-  		$("#photos").addClass("three-col");
-  		$("#photos").removeClass("two-col");
-  		});
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
-  </script>
+.flip-card-front, .flip-card-back {
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back {
+    position: absolute;
+    top: 0;
+}
+</style>
+
+<body>
+  <h1>Slide left right subcontent with two column, and have added FLip on hover also</h1>
+  <section id="photos" class="photos two-col">
+    <div class="row">
+      <div class="column">
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+         <div class="image-grid msrItem">
+          <!-- <div class="sub-content"> Subcontent </div> -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://www.w3schools.com//w3images/nature.jpg">
+              </div>
+              <div class="flip-card-back">
+<h1>FLIPS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/falls2.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+       
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mist.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="image-grid msrItem">
+         <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+<img src="https://www.w3schools.com//w3images/underwater.jpg">
+              </div>
+              <div class="flip-card-back">
+<h1>FLIPS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/ocean.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mountainskies.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/underwater.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script type="text/javascript">
+var i = 1;
+$(".image-grid.msrItem").each(function() {
+  $(this).attr('data-order', i++);
+  var halfWidth = window.innerWidth / 2;
+  var currentDiv = $(this).position().left;
+  if(halfWidth < currentDiv) {
+    $(this).find(".sub-content").toggleClass("leftc");
+  } else {
+    $(this).find(".sub-content").toggleClass("rightc");
+  }
+});
+$(".image-grid").click(function() {
+  $(".image-grid").find(".sub-content").removeClass("left").removeClass("right");
+  var halfWidth = window.innerWidth / 2;
+  var currentDiv = $(this).position().left;
+  if(halfWidth < currentDiv) {
+    $(this).find(".sub-content").toggleClass("left");
+  } else {
+    $(this).find(".sub-content").toggleClass("right");
+  }
+});
+$("#two-col").click(function() {
+  $("#photos").removeClass("three-col");
+  $("#photos").addClass("two-col");
+});
+$("#three-col").click(function() {
+  $("#photos").addClass("three-col");
+  $("#photos").removeClass("two-col");
+});
+</script>
+
 </html>
-
-
-
-
-
-
