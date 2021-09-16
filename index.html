@@ -31,32 +31,35 @@ SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
   	<br><br><br><br><br>
   	</div>
   	
-    <section id="photos" class="photos three-col">
-      <div class="image-grid msrItem" id="a"><img src="https://placekitten.com/252/319" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/325/223" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/238/223" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/343/351" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/323/229" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/220/216" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/218/242" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/261/322" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/368/382" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/258/389" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/246/362" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/230/256" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/315/279" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/340/244" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/365/248" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/357/235" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/278/264" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/391/376" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/206/272" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/224/267" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/280/211" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/352/351" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/276/320" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/357/373" alt="pretty kitty"></div>
-      <div class="image-grid msrItem"><img src="https://placekitten.com/273/270" alt="pretty kitty"></div>
+    <section id="photos" class="photos two-col">
+      <div class="image-grid msrItem" id="a">
+        <img src="https://placekitten.com/252/319" alt="pretty kitty">
+        <div class="sub-content">
+          right
+        </div>
+      </div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/325/223" alt="pretty kitty">
+      <div class="sub-content">
+          left
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/238/223" alt="pretty kitty"><div class="sub-content">
+          right
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/343/351" alt="pretty kitty"><div class="sub-content">
+          right
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/323/229" alt="pretty kitty"><div class="sub-content">
+          right
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/220/216" alt="pretty kitty"><div class="sub-content">
+          right
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/218/242" alt="pretty kitty"><div class="sub-content">
+          right
+        </div></div>
+      <div class="image-grid msrItem"><img src="https://placekitten.com/261/322" alt="pretty kitty"> <div class="sub-content">
+          right
+        </div></div>
     </section>
   </body>
   <style type="text/css">
@@ -138,7 +141,6 @@ SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
     width: 20px;
     height: 20px;
     display: block;
-    border: 1px solid #2f2a2a;
     color: #ffffff;
     position: absolute;
     top: 0;
@@ -157,24 +159,66 @@ SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
     width: 100%;
     margin: 0 auto;
 }
+.sub-content {
+position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #333031ab;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    padding: 0;
+    transition: width .6s ease-in-out;
+    width: 0px;
+    font-size: 44px;
+    color: #fff;
+}
+.sub-content.right {
+  width: 100%;
+    padding-right: 20px;
+  opacity: 1;
+}
+.sub-content.left {
+  width: 100%;
+    padding-left: 20px;
+  opacity: 1;
+}
+
+.rightc{
+
+     left: calc(97% + 16px);
+}
+.leftc{
+
+      right: calc(97% + 16px);
+}
   </style>
   <script type="text/javascript">
   	var i = 1;
   		$(".image-grid.msrItem").each(function(){
   			
   			$(this).attr('data-order', i++);
+        var halfWidth = window.innerWidth/2;
+        var currentDiv = $(this).position().left;
+        if(halfWidth < currentDiv){
+          $(this).find(".sub-content").toggleClass("leftc");
+        }
+        else{
+          $(this).find(".sub-content").toggleClass("rightc");
+        }
   		});
 
   		$(".image-grid").click(function(){
   			var halfWidth = window.innerWidth/2;
   			var currentDiv = $(this).position().left;
-  			console.log(currentDiv + "c");
-  			console.log(halfWidth)
   			if(halfWidth < currentDiv){
-  				//console.log("current div is on right side")
+  				$(this).find(".sub-content").toggleClass("left");
   			}
   			else{
-  				//console.log("current div is on left side")	
+  				$(this).find(".sub-content").toggleClass("right");
   			}
   		});
 
@@ -186,6 +230,7 @@ SUGGESTION :-- Do not go with this layout for the dynamic content.</strong>
   		$("#photos").addClass("three-col");
   		$("#photos").removeClass("two-col");
   		});
+
   </script>
 </html>
 
