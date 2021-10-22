@@ -1,300 +1,337 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial;
-}
-
-.header {
-  text-align: center;
-  padding: 32px;
-}
-
-.row {
-  display: -ms-flexbox;
-  /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap;
-  /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 0px;
-  justify-content: space-between;
-}
-
-
-/* Create four equal columns that sits next to each other */
-
-.column {
-  -ms-flex: 50%;
-  /* IE10 */
-  flex: 49%;
-  max-width: 49%;
-  padding: 0 0px;
-  justify-content: space-between;
-}
-
-.column img {
-  vertical-align: middle;
-  width: 100%;
-  display: block;
-}
-
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
+  * {
+    box-sizing: border-box;
   }
-}
 
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
+  body {
+    margin: 0;
+    font-family: Arial;
   }
-}
 
-.image-grid msrItem {
-  margin-bottom: 20px;
-}
-
-section {
-  max-width: 1104px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 200px !important;
-
-}
-
-.image-grid.msrItem {
-  position: relative;
-  margin-bottom: 4%;
-}
-
-
-/*.image-grid.msrItem:after {
-    background-color: #1f1b1b3d;
-    content: attr(data-order);
-    width: 20px;
-    height: 20px;
-    display: block;
-    color: #ffffff;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
+  .header {
     text-align: center;
+    padding: 32px;
+  }
+
+  .row {
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 12em;
-    justify-content: center;
-}*/
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    margin: 0 auto;
+    max-width: 1300px;
+    width: 100%;
+  }
 
-.mi {
-  display: block;
-  max-width: 1141px;
-  width: 100%;
-  margin: 0 auto;
+  /* Create four equal columns that sits next to each other */
+  .column {
+    -ms-flex: 25%;
+    flex: 25%;
+    max-width: calc(100% / 3);
+    padding: 0 4px;
+
+    transition: all .4s linear;
+  }
+
+  .column-half {
+    flex: 0 0 calc((100% / 3) - 10%);
+    max-width: calc((100% / 3) - 10%);
+  }
+
+  .column-full {
+    max-width: calc((100% / 3) + 20%);
+  }
+
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+  .gridBlock-sub-content {
+    border: 1px solid black;
+    border-top: 0;
+    /* padding: 10px; */
+    font-weight: 600;
+    color: #004963;
+    /* height: 0; */
+    transition: max-height .3s;
+    max-height: 100%;
+    display: none;
 }
 
-.sub-content {
-  position: absolute;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background: #333031ab;
-  z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
-  padding: 0;
-  transition: width .6s ease-in-out;
-  width: 0px;
-  font-size: 44px;
-  color: #fff;
-}
-
-.sub-content.right {
-  width: calc(100% + 4%);
-  padding-right: 20px;
-  opacity: 1;
-}
-
-.sub-content.left {
-  width: calc(100% + 4%);
-  padding-left: 20px;
-  opacity: 1;
-}
-
-.rightc {
-  left: calc(97% + 16px);
-}
-
-.leftc {
-  right: calc(97% + 16px);
-}
-.flip-card {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  perspective: 1000px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  /* position: absolute; */
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-card-back {
-  background-color: black;
-  color: white;
-  transform: rotateY(180deg);
-}
-
-.flip-card-back {
-    position: absolute;
-    top: 0;
+.gridBlock-sub-content p {
+    margin: 0;
+    line-height: 1;
+    padding: 26px 15px;
 }
 </style>
 
 <body>
-  <h1>Slide left right subcontent with two column, and have added FLip on hover also</h1>
-  <section id="photos" class="photos two-col">
-    <div class="row">
-      <div class="column">
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
-          <div class="sub-content"> Subcontent </div>
-        </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
-          <div class="sub-content"> Subcontent </div>
-        </div>
-         <div class="image-grid msrItem">
-          <!-- <div class="sub-content"> Subcontent </div> -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <img src="https://www.w3schools.com//w3images/nature.jpg">
-              </div>
-              <div class="flip-card-back">
-<h1>FLIPS</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/falls2.jpg">
-          <div class="sub-content"> Subcontent </div>
-        </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
-          <div class="sub-content"> Subcontent </div>
-        </div>
-       
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mist.jpg">
-          <div class="sub-content"> Subcontent </div>
-        </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
-          <div class="sub-content"> Subcontent </div>
+
+  <!-- Header -->
+  <div class="header">
+
+  </div>
+
+  <!-- Photo Grid -->
+  <div class="row">
+    <div class="column">
+      <div class="Responsive-grid-block" id="cg-a1">
+        <img src="https://picsum.photos/400" style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
       </div>
-      <div class="column">
-        <div class="image-grid msrItem">
-         <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-<img src="https://www.w3schools.com//w3images/underwater.jpg">
-              </div>
-              <div class="flip-card-back">
-<h1>FLIPS</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="Responsive-grid-block" id="cg-a2">
+        <img src="https://picsum.photos/600" style="width:100%">
 
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/ocean.jpg">
-          <div class="sub-content"> Subcontent </div>
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
-          <div class="sub-content"> Subcontent </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-a3"><img src="https://www.w3schools.com/w3images/falls2.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mountainskies.jpg">
-          <div class="sub-content"> Subcontent </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-a4"><img src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
-          <div class="sub-content"> Subcontent </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-a5"><img src="https://www.w3schools.com/w3images/nature.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
-        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/underwater.jpg">
-          <div class="sub-content"> Subcontent </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-a6"><img src="https://www.w3schools.com/w3images/mist.jpg"
+          style="width:100%"></div>
+      <div class="Responsive-grid-block" id="cg-a7"><img src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
         </div>
       </div>
     </div>
-  </section>
+    <div class="column">
+      <div class="Responsive-grid-block" id="cg-b1"><img src="https://www.w3schools.com/w3images/underwater.jpg"
+          style="width:100%">
+          <div class="gridBlock-sub-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+              nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+              tincidunt tellus tempus et. Ut augue est, </p>
+          </div></div>
+      <div class="Responsive-grid-block" id="cg-b2"><img src="https://www.w3schools.com/w3images/ocean.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-b3"><img src="https://www.w3schools.com/w3images/wedding.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-b4"><img src="https://www.w3schools.com/w3images/mountainskies.jpg"
+          style="width:100%">
+          <div class="gridBlock-sub-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+              nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+              tincidunt tellus tempus et. Ut augue est, </p>
+          </div>
+        </div>
+      <div class="Responsive-grid-block" id="cg-b5"><img src="https://www.w3schools.com/w3images/rocks.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-b6"><img src="https://www.w3schools.com/w3images/underwater.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="Responsive-grid-block" id="cg-c1"><img src="https://www.w3schools.com/w3images/wedding.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c2"><img src="https://www.w3schools.com/w3images/rocks.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c3"><img src="https://www.w3schools.com/w3images/falls2.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c4"><img src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c5"><img src="https://www.w3schools.com/w3images/nature.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c6"><img src="https://www.w3schools.com/w3images/mist.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+      <div class="Responsive-grid-block" id="cg-c7"><img src="https://www.w3schools.com/w3images/paris.jpg"
+          style="width:100%">
+
+        <div class="gridBlock-sub-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis elit quis felis laoreet, quis blandit
+            nunc eleifend. Nulla feugiat a neque sit amet viverra. Suspendisse potenti. Vivamus laoreet ex est, eget
+            tincidunt tellus tempus et. Ut augue est, </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    $(".Responsive-grid-block").click(function () {
+      var that = $(this).parent();
+      if (that.hasClass("column-full") && $(this).hasClass("_active-gridBLock")) {
+        $(this).removeClass("_active-gridBLock")
+        $(".column").removeClass("column-half");
+        $(".column").removeClass("column-full");
+        $(".Responsive-grid-block").find(".gridBlock-sub-content").slideUp();
+        console.log("1");
+      }
+      //  else if (that.hasClass("column-full") && !$(this).hasClass("_active-gridBLock")) {
+      //   console.log("2");
+      //   $(".Responsive-grid-block").removeClass("_active-gridBLock");
+      //   $(this).addClass("_active-gridBLock");
+
+      //   $(".Responsive-grid-block").find(".gridBlock-sub-content").slideUp();
+      //   $(this).find(".gridBlock-sub-content").slideDown();
+      // }
+      else {
+        // setTimeout(function() {
+          console.log("3");
+        $(".column").removeClass("column-half", "column-full");
+        //$(".column").removeClass("column-full");
+        $(".column").not(that).addClass("column-half");
+        $(that).addClass("column-full");
+        $(this).addClass("_active-gridBLock")
+        $(this).find(".gridBlock-sub-content").slideDown();
+        // }, 200)
+      }
+
+
+      const getId = $(this).attr("id");
+      const scrolledDiv = document.getElementById(getId);
+
+      if (!$(this).hasClass("opened")) {
+        getViewPort(scrolledDiv,'start');
+        $(this).addClass("opened");
+      } else {
+        $("img").removeClass("opened");
+        getViewPort(scrolledDiv,'center');
+      }
+    });
+
+    function getViewPort(element, block) {
+      setTimeout(function () {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: block,
+        });
+      }, 200);
+    }
+
+  </script>
 </body>
-<script type="text/javascript">
-var i = 1;
-$(".image-grid.msrItem").each(function() {
-  $(this).attr('data-order', i++);
-  var halfWidth = window.innerWidth / 2;
-  var currentDiv = $(this).position().left;
-  if(halfWidth < currentDiv) {
-    $(this).find(".sub-content").toggleClass("leftc");
-  } else {
-    $(this).find(".sub-content").toggleClass("rightc");
-  }
-});
-$(".image-grid").click(function() {
-  $(".image-grid").find(".sub-content").removeClass("left").removeClass("right");
-  var halfWidth = window.innerWidth / 2;
-  var currentDiv = $(this).position().left;
-  if(halfWidth < currentDiv) {
-    $(this).find(".sub-content").toggleClass("left");
-  } else {
-    $(this).find(".sub-content").toggleClass("right");
-  }
-});
-$("#two-col").click(function() {
-  $("#photos").removeClass("three-col");
-  $("#photos").addClass("two-col");
-});
-$("#three-col").click(function() {
-  $("#photos").addClass("three-col");
-  $("#photos").removeClass("two-col");
-});
-</script>
 
 </html>
