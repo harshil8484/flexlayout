@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 0px;
+  justify-content: space-between;
+}
+
+
+/* Create four equal columns that sits next to each other */
+
+.column {
+  -ms-flex: 50%;
+  /* IE10 */
+  flex: 49%;
+  max-width: 49%;
+  padding: 0 0px;
+  justify-content: space-between;
+}
+
+.column img {
+  vertical-align: middle;
+  width: 100%;
+  display: block;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.image-grid msrItem {
+  margin-bottom: 20px;
+}
+
+section {
+  max-width: 1104px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px !important;
+
+}
+
+.image-grid.msrItem {
+  position: relative;
+  margin-bottom: 4%;
+}
+
+
+/*.image-grid.msrItem:after {
+    background-color: #1f1b1b3d;
+    content: attr(data-order);
+    width: 20px;
+    height: 20px;
+    display: block;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 12em;
+    justify-content: center;
+}*/
+
+.mi {
+  display: block;
+  max-width: 1141px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sub-content {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #333031ab;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 0;
+  transition: width .6s ease-in-out;
+  width: 0px;
+  font-size: 44px;
+  color: #fff;
+}
+
+.sub-content.right {
+  width: calc(100% + 4%);
+  padding-right: 20px;
+  opacity: 1;
+}
+
+.sub-content.left {
+  width: calc(100% + 4%);
+  padding-left: 20px;
+  opacity: 1;
+}
+
+.rightc {
+  left: calc(97% + 16px);
+}
+
+.leftc {
+  right: calc(97% + 16px);
+}
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: black;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back {
+    position: absolute;
+    top: 0;
+}
+</style>
+
+<body>
+  <h1>Slide left right subcontent with two column, and have added FLip on hover also</h1>
+  <section id="photos" class="photos two-col">
+    <div class="row">
+      <div class="column">
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+         <div class="image-grid msrItem">
+          <!-- <div class="sub-content"> Subcontent </div> -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://www.w3schools.com//w3images/nature.jpg">
+              </div>
+              <div class="flip-card-back">
+<h1>FLIPS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/falls2.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+       
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mist.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/paris.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="image-grid msrItem">
+         <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+<img src="https://www.w3schools.com//w3images/underwater.jpg">
+              </div>
+              <div class="flip-card-back">
+<h1>FLIPS</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/ocean.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/wedding.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/mountainskies.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/rocks.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+        <div class="image-grid msrItem"><img src="https://www.w3schools.com//w3images/underwater.jpg">
+          <div class="sub-content"> Subcontent </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script type="text/javascript">
+var i = 1;
+$(".image-grid.msrItem").each(function() {
+  $(this).attr('data-order', i++);
+  var halfWidth = window.innerWidth / 2;
+  var currentDiv = $(this).position().left;
+  if(halfWidth < currentDiv) {
+    $(this).find(".sub-content").toggleClass("leftc");
+  } else {
+    $(this).find(".sub-content").toggleClass("rightc");
+  }
+});
+$(".image-grid").click(function() {
+  $(".image-grid").find(".sub-content").removeClass("left").removeClass("right");
+  var halfWidth = window.innerWidth / 2;
+  var currentDiv = $(this).position().left;
+  if(halfWidth < currentDiv) {
+    $(this).find(".sub-content").toggleClass("left");
+  } else {
+    $(this).find(".sub-content").toggleClass("right");
+  }
+});
+$("#two-col").click(function() {
+  $("#photos").removeClass("three-col");
+  $("#photos").addClass("two-col");
+});
+$("#three-col").click(function() {
+  $("#photos").addClass("three-col");
+  $("#photos").removeClass("two-col");
+});
+</script>
+
+</html>
